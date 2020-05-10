@@ -1,6 +1,6 @@
 package com.example.td3;
 
-public class coins {
+public class Coin {
     private Integer id;
     private String uuid;
     private String slug;

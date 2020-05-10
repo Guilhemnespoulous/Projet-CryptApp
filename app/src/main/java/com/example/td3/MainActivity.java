@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     makeApiCall();
     }
 
-    private void showList(List<coins> coinsList) {
+    private void showList(List<Coin> coinList) {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // define an adapter
-        mAdapter = new ListAdapter(coinsList);
+        mAdapter = new ListAdapter(coinList);
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -75,9 +74,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    List<coins> coinsList = response.body().getCoins();
-                    showList(coinsList);
-
+                    List<Coin> coinList = response.body().getData().getCoins();
+                    showList(coinList);
                 }
                 else{
                     showError();

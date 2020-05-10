@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private List<coins> values;
+    private List<Coin> values;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -30,7 +30,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
     }
 
-    public void add(int position, coins item) {
+    public void add(int position, Coin item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -41,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<coins> myDataset) {
+    public ListAdapter(List<Coin> myDataset) {
         values = myDataset;
     }
 
@@ -63,7 +63,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        final coins currentCoin = values.get(position);
+        final Coin currentCoin = values.get(position);
         holder.txtHeader.setText(currentCoin.getName());
       //  holder.txtHeader.setOnClickListener(new View.OnClickListener() {
       //      @Override
