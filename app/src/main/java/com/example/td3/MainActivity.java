@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    showList();
+
     makeApiCall();
     }
 
-    private void showList() {
+    private void showList(List<coins> coinsList) {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }// define an adapter
-        mAdapter = new ListAdapter(input);
+
+
+
+        // define an adapter
+        mAdapter = new ListAdapter(coinsList);
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null){
                     List<coins> coinsList = response.body().getCoins();
-                    Toast.makeText(getApplicationContext(), "Succes de l'API", Toast.LENGTH_SHORT).show();
+                    showList(coinsList);
 
                 }
                 else{
