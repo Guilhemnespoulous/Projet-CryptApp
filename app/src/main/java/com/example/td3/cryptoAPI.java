@@ -6,6 +6,6 @@ import retrofit2.http.Query;
 
 public interface cryptoAPI {
 
-    @GET("https://api.coinranking.com/v1/public/coins")
+    @GET("/v1/public/coins")
     Call<CryptoApiResponse> getCoinResponse();
 }

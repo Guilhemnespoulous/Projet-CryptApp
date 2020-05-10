@@ -18,7 +18,47 @@ public class coins {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getIconType() {
+        return iconType;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public Integer getRank() {
+        return rank;
     }
 }

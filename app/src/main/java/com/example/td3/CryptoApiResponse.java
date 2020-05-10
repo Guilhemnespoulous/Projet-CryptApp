@@ -13,4 +13,12 @@ public class CryptoApiResponse {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public List<com.example.td3.coins> getCoins() {
+        return coins;
+    }
+
+    public void setCoins(List<com.example.td3.coins> coins) {
+        this.coins = coins;
+    }
 }
