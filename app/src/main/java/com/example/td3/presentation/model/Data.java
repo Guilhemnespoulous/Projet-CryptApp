@@ -1,4 +1,6 @@
-package com.example.td3;
+package com.example.td3.presentation.model;
+
+        import com.example.td3.presentation.model.Coin;
 
         import java.util.List;
 

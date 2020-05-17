@@ -1,15 +1,25 @@
-package com.example.td3;
+package com.example.td3.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.td3.Constant;
+import com.example.td3.R;
+import com.example.td3.data.cryptoAPI;
+import com.example.td3.presentation.controller.MainController;
+import com.example.td3.presentation.model.Coin;
+import com.example.td3.presentation.model.CryptoApiResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,25 +29,29 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String BASE_URL = "https://api.coinranking.com/";
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    public MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        controller = new MainController(this,
+                new GsonBuilder()
+                .setLenient()
+                .create(),getSharedPreferences("application esiea", Context.MODE_PRIVATE));
+        controller.onStart();
 
 
-
-
-    makeApiCall();
     }
 
-    private void showList(List<Coin> coinList) {
+
+
+    public void showList(List<Coin> coinList) {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -55,42 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void makeApiCall(){
-
-
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        cryptoAPI cryptoAPI = retrofit.create(cryptoAPI.class);
-
-        Call<CryptoApiResponse> call = cryptoAPI.getCoinResponse();
-        call.enqueue(new Callback<CryptoApiResponse>() {
-            @Override
-            public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null){
-                    List<Coin> coinList = response.body().getData().getCoins();
-                    showList(coinList);
-                }
-                else{
-                    showError();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CryptoApiResponse> call, Throwable t) {
-                showError();
-            }
-        });
-
-    }
-
-    private void showError() {
+    public void showError() {
         Toast.makeText(getApplicationContext(), "Erreur de l'API", Toast.LENGTH_SHORT).show();
     }
 }
