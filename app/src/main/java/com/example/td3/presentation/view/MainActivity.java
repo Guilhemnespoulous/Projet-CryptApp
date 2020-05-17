@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.td3.Constant;
+import com.example.td3.Injection;
 import com.example.td3.R;
 import com.example.td3.data.cryptoAPI;
 import com.example.td3.presentation.controller.MainController;
@@ -41,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         controller = new MainController(this,
-                new GsonBuilder()
-                .setLenient()
-                .create(),getSharedPreferences("application esiea", Context.MODE_PRIVATE));
+                Injection.getGson(),
+                Injection.getSharedPreferences(getApplicationContext()));
         controller.onStart();
 
 
