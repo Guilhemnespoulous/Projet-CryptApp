@@ -2,7 +2,10 @@ package com.example.td3.presentation.controller;
 
 public class MainController {
 
-    public void OnStart(){
+    public MainController(){
+
+    }
+    public void onStart(){
 
     }
 }

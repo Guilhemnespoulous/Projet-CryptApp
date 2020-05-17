@@ -35,15 +35,19 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private SharedPreferences sharedPreferences;
     private Gson gson;
+
     public MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sharedPreferences = getSharedPreferences("application esiea", Context.MODE_PRIVATE);
         controller = new MainController();
-        controller.OnStart();
+        controller.onStart();
+
+        
+        sharedPreferences = getSharedPreferences("application esiea", Context.MODE_PRIVATE);
+
 
 
         gson = new GsonBuilder()
