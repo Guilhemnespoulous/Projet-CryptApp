@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToDetails(Coin coin) {
         Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("coinKey", Injection.getGson().toJson(coin));
         MainActivity.this.startActivity(myIntent);
     }
 }
