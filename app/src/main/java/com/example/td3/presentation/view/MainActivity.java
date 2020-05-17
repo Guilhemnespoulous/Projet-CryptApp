@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.td3.Constant;
 import com.example.td3.R;
 import com.example.td3.data.cryptoAPI;
+import com.example.td3.presentation.controller.MainController;
 import com.example.td3.presentation.model.Coin;
 import com.example.td3.presentation.model.CryptoApiResponse;
 import com.google.gson.Gson;
@@ -28,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
+    public MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        controller = new MainController();
+        controller.OnStart();
+        
 
 
     makeApiCall();
