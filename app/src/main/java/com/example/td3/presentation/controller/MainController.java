@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.td3.Constant;
+import com.example.td3.Injection;
 import com.example.td3.data.cryptoAPI;
 import com.example.td3.presentation.model.Coin;
 import com.example.td3.presentation.model.CryptoApiResponse;
@@ -51,14 +52,7 @@ public class MainController {
 
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        cryptoAPI cryptoAPI = retrofit.create(cryptoAPI.class);
-
-        Call<CryptoApiResponse> call = cryptoAPI.getCoinResponse();
+        Call<CryptoApiResponse> call = Injection.getCryptoApi().getCoinResponse();
         call.enqueue(new Callback<CryptoApiResponse>() {
             @Override
             public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
