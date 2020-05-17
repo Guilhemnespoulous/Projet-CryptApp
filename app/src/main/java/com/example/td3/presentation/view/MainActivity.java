@@ -1,4 +1,4 @@
-package com.example.td3;
+package com.example.td3.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.td3.R;
+import com.example.td3.data.cryptoAPI;
+import com.example.td3.presentation.model.Coin;
+import com.example.td3.presentation.model.CryptoApiResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -1,6 +1,4 @@
-package com.example.td3;
-
-import java.util.List;
+package com.example.td3.presentation.model;
 
 public class CryptoApiResponse {
 
