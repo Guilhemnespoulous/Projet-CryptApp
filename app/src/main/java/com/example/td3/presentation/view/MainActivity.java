@@ -17,7 +17,9 @@ import com.example.td3.presentation.model.Coin;
 import com.example.td3.presentation.model.CryptoApiResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,8 +49,27 @@ public class MainActivity extends AppCompatActivity {
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
+        List<Coin> coinList = getDataFromCache();
+        if (coinList != null) {
+            showList(coinList);
+            Toast.makeText(getApplicationContext(), "affichage liste en cache", Toast.LENGTH_SHORT).show();
 
-    makeApiCall();
+        }else{
+            makeApiCall();
+        }
+    }
+
+    private List<Coin> getDataFromCache() {
+        String jsonCoin = sharedPreferences.getString(Constant.KEY_COIN_LIST, null);
+
+        if(jsonCoin == null){
+            return null;
+        } else{
+            Type listType = new TypeToken<List<Coin>>(){}.getType();
+            return gson.fromJson(jsonCoin, listType);
+        }
+
+
     }
 
     private void showList(List<Coin> coinList) {
