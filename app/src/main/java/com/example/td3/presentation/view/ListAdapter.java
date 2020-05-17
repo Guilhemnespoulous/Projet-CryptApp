@@ -15,10 +15,11 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Coin> values;
+    private OnItemClickListener listener;
+    public interface OnItemClickListener{
+        void onItemClick(Coin item);
+    }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView txtHeader;
@@ -44,9 +45,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<Coin> myDataset) {
-        values = myDataset;
+    public ListAdapter(List<Coin> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
+
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -76,6 +79,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
       //  });
 
         holder.txtFooter.setText(currentCoin.getSymbol());
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override public void onClick(View v){
+                listener.onItemClick(currentCoin);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

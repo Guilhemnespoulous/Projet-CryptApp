@@ -95,4 +95,7 @@ public class MainController {
 
 
     }
+    public void onItemClick(Coin coin){
+        view.navigateToDetails(coin);
+    }
 }
