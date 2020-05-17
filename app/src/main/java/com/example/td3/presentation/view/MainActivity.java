@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList(List<Coin> coinList) {
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
 
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigateToDetails(Coin coin) {
-        Toast.makeText(getApplicationContext(), "Navigation", Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        MainActivity.this.startActivity(myIntent);
     }
 }
