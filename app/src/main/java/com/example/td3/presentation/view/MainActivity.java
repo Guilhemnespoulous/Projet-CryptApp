@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.td3.Constant;
 import com.example.td3.R;
 import com.example.td3.data.cryptoAPI;
 import com.example.td3.presentation.model.Coin;
@@ -23,7 +24,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String BASE_URL = "https://api.coinranking.com/";
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
