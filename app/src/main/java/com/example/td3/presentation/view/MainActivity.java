@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.td3.Constant;
 import com.example.td3.Injection;
 import com.example.td3.R;
 import com.example.td3.presentation.controller.MainController;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToDetails(Coin coin) {
         Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
-        myIntent.putExtra("coinKey", Injection.getGson().toJson(coin));
+        myIntent.putExtra(Constant.KEY_COIN, Injection.getGson().toJson(coin));
         MainActivity.this.startActivity(myIntent);
     }
 }

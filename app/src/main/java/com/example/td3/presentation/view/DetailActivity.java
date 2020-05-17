@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.td3.Constant;
 import com.example.td3.Injection;
 import com.example.td3.R;
 import com.example.td3.presentation.controller.MainController;
@@ -26,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail_activity);
         txtDetail = findViewById(R.id.detail_txt);
         Intent intent = getIntent();
-        String coinJson = intent.getStringExtra("coinKey");
+        String coinJson = intent.getStringExtra(Constant.KEY_COIN);
         Coin coin = Injection.getGson().fromJson(coinJson, Coin.class);
         showDetail(coin);
     }
