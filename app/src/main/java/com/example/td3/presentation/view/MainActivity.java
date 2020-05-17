@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
 
     public MainController controller;
 
@@ -42,41 +40,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        controller = new MainController();
+        controller = new MainController(this,
+                new GsonBuilder()
+                .setLenient()
+                .create(),getSharedPreferences("application esiea", Context.MODE_PRIVATE));
         controller.onStart();
 
-        
-        sharedPreferences = getSharedPreferences("application esiea", Context.MODE_PRIVATE);
-
-
-
-        gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        List<Coin> coinList = getDataFromCache();
-        if (coinList != null) {
-            showList(coinList);
-            Toast.makeText(getApplicationContext(), "affichage liste en cache", Toast.LENGTH_SHORT).show();
-
-        }else{
-            makeApiCall();
-        }
-    }
-
-    private List<Coin> getDataFromCache() {
-        String jsonCoin = sharedPreferences.getString(Constant.KEY_COIN_LIST, null);
-
-        if(jsonCoin == null){
-            return null;
-        } else{
-            Type listType = new TypeToken<List<Coin>>(){}.getType();
-            return gson.fromJson(jsonCoin, listType);
-        }
-
 
     }
 
-    private void showList(List<Coin> coinList) {
+
+
+    public void showList(List<Coin> coinList) {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -94,50 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void makeApiCall(){
-
-
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        cryptoAPI cryptoAPI = retrofit.create(cryptoAPI.class);
-
-        Call<CryptoApiResponse> call = cryptoAPI.getCoinResponse();
-        call.enqueue(new Callback<CryptoApiResponse>() {
-            @Override
-            public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null){
-                    List<Coin> coinList = response.body().getData().getCoins();
-                    saveList(coinList);
-                    showList(coinList);
-                }
-                else{
-                    showError();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CryptoApiResponse> call, Throwable t) {
-                showError();
-            }
-        });
-
-    }
-
-    private void saveList(List<Coin> coinList) {
-        String jsonString = gson.toJson(coinList);
-        sharedPreferences
-                .edit()
-                .putString("jsonCoinList", jsonString)
-                .apply();
-        Toast.makeText(getApplicationContext(), "Liste sauvegardée", Toast.LENGTH_SHORT).show();
-
-    }
-
-    private void showError() {
+    public void showError() {
         Toast.makeText(getApplicationContext(), "Erreur de l'API", Toast.LENGTH_SHORT).show();
     }
 }
