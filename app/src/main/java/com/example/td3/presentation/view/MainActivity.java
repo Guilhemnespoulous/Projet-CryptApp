@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -29,16 +31,22 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private SharedPreferences sharedPreferences;
+    private Gson gson;
     public MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = getSharedPreferences("application esiea", Context.MODE_PRIVATE);
         controller = new MainController();
         controller.OnStart();
-        
 
+
+        gson = new GsonBuilder()
+                .setLenient()
+                .create();
 
     makeApiCall();
     }
@@ -64,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
     private void makeApiCall(){
 
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<CryptoApiResponse> call, Response<CryptoApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null){
                     List<Coin> coinList = response.body().getData().getCoins();
+                    saveList(coinList);
                     showList(coinList);
                 }
                 else{
@@ -93,6 +99,16 @@ public class MainActivity extends AppCompatActivity {
                 showError();
             }
         });
+
+    }
+
+    private void saveList(List<Coin> coinList) {
+        String jsonString = gson.toJson(coinList);
+        sharedPreferences
+                .edit()
+                .putString("jsonCoinList", jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "Liste sauvegardée", Toast.LENGTH_SHORT).show();
 
     }
 
