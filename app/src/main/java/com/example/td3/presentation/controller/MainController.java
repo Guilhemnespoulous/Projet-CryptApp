@@ -78,7 +78,7 @@ public class MainController {
         String jsonString = gson.toJson(coinList);
         sharedPreferences
                 .edit()
-                .putString("jsonCoinList", jsonString)
+                .putString(Constant.KEY_COIN_LIST, jsonString)
                 .apply();
         Toast.makeText(view.getApplicationContext(), "Liste sauvegardée", Toast.LENGTH_SHORT).show();
 
@@ -94,5 +94,8 @@ public class MainController {
         }
 
 
+    }
+    public void onItemClick(Coin coin){
+        view.navigateToDetails(coin);
     }
 }
