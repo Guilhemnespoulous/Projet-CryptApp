@@ -23,11 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinRank" />
 
     <ImageView
         android:id="@+id/coinLogo"
@@ -51,6 +53,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/coinRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/coin_rank_txt"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinPrice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

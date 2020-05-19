@@ -18,7 +18,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView txtDetail;
     private TextView txtdescription;
+    private TextView txtRank;
     private TextView txtPrice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,6 +30,8 @@ public class DetailActivity extends AppCompatActivity {
         txtDetail = findViewById(R.id.detail_txt);
         txtdescription = findViewById(R.id.description_txt);
         txtPrice = findViewById(R.id.coinPrice);
+        txtRank = findViewById(R.id.coinRank);
+
         Intent intent = getIntent();
         String coinJson = intent.getStringExtra(Constant.KEY_COIN);
         Coin coin = Injection.getGson().fromJson(coinJson, Coin.class);
@@ -41,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
     private void showDetail(Coin coin) {
         txtDetail.setText(coin.getName());
         txtdescription.setText(coin.getDescription());
-        txtPrice.setText("Prix : " + coin.getPrice() +" $");
+        txtPrice.setText("Un " +coin.getSymbol()+ " vaut: " + coin.getPrice() +" $");
+        txtRank.setText("Rang de la cryptomonnaie: " + coin.getRank());
     }
 }
