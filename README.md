@@ -11,7 +11,8 @@ Pour installer l'application il faut:
 1. Disposer d'une version android >16. Affichage optimal des features avec une version >21.
 2. Prendre la branche :[Final Release](https://coinranking.com/)
 
-## Api utilisée :![Image Coinranking](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/Coinranking.png)
+## Api utilisée :
+![Image Coinranking](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/Coinranking.png)
 J'ai utilisé l'api "Coinranking" cette API gratuite est très complète.
 Le site web officiel de l'API est :
 [Cliquez ici](https://coinranking.com/)
