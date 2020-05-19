@@ -3,4 +3,5 @@
     <string name="detail_text">Ecran details</string>
     <string name="price">Price : $</string>
     <string name="coin_rank_txt">Rang de la cryptomonnaie</string>
+    <string name="siteTxt">site officiel :</string>
 </resources>
