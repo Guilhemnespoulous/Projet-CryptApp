@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="@string/detail_text"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,9 +25,11 @@
         android:layout_marginLeft="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
+        android:maxLength="496"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinUrl" />
 
     <ImageView
         android:id="@+id/coinLogo"
@@ -45,9 +48,35 @@
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:text="@string/price"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/coinRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/coin_rank_txt"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinPrice" />
+
+    <TextView
+        android:id="@+id/coinUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/siteTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinRank" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
