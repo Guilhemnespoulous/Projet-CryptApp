@@ -2,6 +2,8 @@ package com.example.td3.presentation.view;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,5 +49,11 @@ public class DetailActivity extends AppCompatActivity {
         txtdescription.setText(coin.getDescription());
         txtPrice.setText("Un " +coin.getSymbol()+ " vaut: " + coin.getPrice() +" $");
         txtRank.setText("Rang de la cryptomonnaie: " + coin.getRank());
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setNavigationBarColor(Color.parseColor(coin.getColor()));
+            getWindow().setStatusBarColor(Color.parseColor(coin.getColor()));
+
+
+        }
     }
 }
