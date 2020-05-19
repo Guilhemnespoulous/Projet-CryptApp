@@ -1,5 +1,6 @@
 package com.example.td3.presentation.view;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -20,8 +21,10 @@ public class DetailActivity extends AppCompatActivity {
     private TextView txtPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txtDetail = findViewById(R.id.detail_txt);
         txtdescription = findViewById(R.id.description_txt);
         txtPrice = findViewById(R.id.coinPrice);
