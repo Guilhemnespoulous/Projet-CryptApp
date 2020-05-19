@@ -1,4 +1,4 @@
-#CryptApp
+# CryptApp
 
 ## Description :
 
@@ -6,3 +6,5 @@ CryptApp est une application mobile codée avec Java qui permet de consulter des
 
 ## Api utilisée :
 J'ai utilisé l'api "CoinRanking" cette API gratuite est très complète.
+Le site web officiel de l'API est :
+[a link](https://coinranking.com/)
