@@ -13,6 +13,7 @@ Pour installer l'application il faut:
 
 ## Api utilisée :
 ![Image Coinranking](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/Coinranking.png)
+
 J'ai utilisé l'api "Coinranking" cette API gratuite est très complète.
 Le site web officiel de l'API est :
 [Cliquez ici](https://coinranking.com/)
@@ -30,7 +31,7 @@ Il y est indiqué leur nom, leur symbole ainsi que leur logo quand il est dispon
 ## Elements techniques :
 
 * Ecran avec liste d'éléments
-![Image Acceuil2](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/acceuil2.png)
+![Image acceuil2](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/acceuil2.png)
 
 * Ecran avec le détail d'un élément sélectionné
 ![Image Détail2](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/detail2.png)
