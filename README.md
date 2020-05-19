@@ -31,22 +31,32 @@ Il y est indiqué leur nom, leur symbole ainsi que leur logo quand il est dispon
 ## Elements techniques :
 
 * Ecran avec liste d'éléments
+
 ![Image acceuil2](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/accueil2.png)
 
 * Ecran avec le détail d'un élément sélectionné
+
 ![Image Détail2](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/detail2.png)
 
 * Appel à une API rest [Coinranking](https://coinranking.com/)
+
 * Stockage des données en cache
+
 ![Image Cache](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/cache.png)
 
 * Architecture en MVC
+
 ![Image mvc](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/mvc.png)
 
 * Respect des principes SOLID
 
 * Utilisation de Singletons (classe Injection)
+
 ![Image singletons](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/singletons.png)
 
 
 ## Urilisation du GitFlow
+
+J'ai utilisé gitFlow afin de simplifier la gestion des vertions et des features de ce projet.
+
+![Image gitflow](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/gitflow.png)
