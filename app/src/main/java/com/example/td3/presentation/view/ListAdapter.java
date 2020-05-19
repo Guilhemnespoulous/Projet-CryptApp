@@ -1,21 +1,25 @@
 package com.example.td3.presentation.view;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.td3.R;
 import com.example.td3.presentation.model.Coin;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Coin> values;
     private OnItemClickListener listener;
+    private Context context;
     public interface OnItemClickListener{
         void onItemClick(Coin item);
     }
@@ -24,13 +28,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // each data item is just a string in this case
         TextView txtHeader;
         TextView txtFooter;
+        ImageView rowIcon;
         View layout;
 
         ViewHolder(View v) {
             super(v);
             layout = v;
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            txtHeader = v.findViewById(R.id.firstLine);
+            txtFooter = v.findViewById(R.id.secondLine);
+            rowIcon = v.findViewById(R.id.icon);
         }
     }
 
@@ -45,9 +51,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<Coin> myDataset, OnItemClickListener listener) {
+    public ListAdapter(List<Coin> myDataset, OnItemClickListener listener, Context context) {
         this.values = myDataset;
         this.listener = listener;
+        this.context = context;
     }
 
 
@@ -71,6 +78,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         final Coin currentCoin = values.get(position);
         holder.txtHeader.setText(currentCoin.getName());
+        Picasso.with(context).load("https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/" + currentCoin.getSymbol().toLowerCase() + ".png").into(holder.rowIcon);
       //  holder.txtHeader.setOnClickListener(new View.OnClickListener() {
       //      @Override
       //      public void onClick(View v) {

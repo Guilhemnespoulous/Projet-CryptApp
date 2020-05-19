@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(Coin item) {
                 controller.onItemClick(item);
             }
-        });
+        }, getApplicationContext());
         recyclerView.setAdapter(mAdapter);
 
     }
