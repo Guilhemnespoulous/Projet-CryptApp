@@ -78,6 +78,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         final Coin currentCoin = values.get(position);
         holder.txtHeader.setText(currentCoin.getName());
+        // Comme exppliqué, mon API ne fournit que des images en SVG, malheureusement, je n'ai aps réussi à les afficher dans ce format, j'ai donc du controurner le problème et prendre des images disponibles sur une autre source. On fait toutefois un appelAPI pour trouver l'url de cette image
         Picasso.with(context).load("https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/" + currentCoin.getSymbol().toLowerCase() + ".png").into(holder.rowIcon);
       //  holder.txtHeader.setOnClickListener(new View.OnClickListener() {
       //      @Override
