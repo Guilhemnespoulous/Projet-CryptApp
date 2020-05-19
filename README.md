@@ -1,5 +1,5 @@
 # CryptApp
-![Image Acceuil](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/acceuil.png)
+![Image Acceuil](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/acceuil.png) ![Image détails](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/details.png)
 ## Description :
 
 CryptApp est une application mobile codée avec Java qui permet de consulter des informations mises à jour en temps réel sur de très nombreuses cryptomonnaies.
