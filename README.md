@@ -9,7 +9,7 @@ La capitalisation sur les cryptomonnaies augmente constament ces dernères anné
 ## Installation
 Pour installer l'application il faut:
 1. Disposer d'une version android >16. Affichage optimal des features avec une version >21.
-2. Prendre la branche : [Final Release](https://coinranking.com/)
+2. Prendre la branche : [Final Release](https://github.com/Guilhemnespoulous/Projet-CryptApp/tree/FinalRelease)
 
 ## Api utilisée :
 ![Image Coinranking](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/Coinranking.png)
