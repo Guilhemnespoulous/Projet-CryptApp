@@ -1,4 +1,4 @@
-# CryptApp by *Guilhem NESPOULOUS*
+# CryptApp ## *by Guilhem NESPOULOUS*
 ![Image Acceuil](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/acceuil.png) ![Image détails](https://raw.githubusercontent.com/Guilhemnespoulous/Projet-CryptApp/master/images/details.png)
 ## Description :
 
